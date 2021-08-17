@@ -1,5 +1,5 @@
 let isValid = function () {
-  let arr = Array.from("{}()");
+  let arr = Array.from("(){[()]}[]");
   let stack = [];
   console.log(arr);
 
@@ -16,6 +16,8 @@ let isValid = function () {
         arr[i].charCodeAt() == 123
       ) {
         stack.push(arr[i]);
+        // console.log("stack :", stack);
+        // console.log("stack[-1] :", stack[stack.length - 1]);
       } else if (
         arr[i].charCodeAt() == 41 ||
         arr[i].charCodeAt() == 93 ||
@@ -24,11 +26,12 @@ let isValid = function () {
         if (
           arr[i].charCodeAt() - 1 == arr[i - 1].charCodeAt() ||
           arr[i].charCodeAt() - 2 == arr[i - 1].charCodeAt() ||
-          arr[i].charCodeAt() - 1 == stack.pop().charCodeAt() ||
-          arr[i].charCodeAt() - 2 == stack.pop().charCodeAt()
+          arr[i].charCodeAt() - 1 == stack[stack.length - 1].charCodeAt() ||
+          arr[i].charCodeAt() - 2 == stack[stack.length - 1].charCodeAt()
         ) {
-          stack.pop(arr[i - 1]);
-          console.log(stack);
+          //   console.log(stack);
+          stack.pop(-1);
+          //   console.log(stack);
           console.log("true");
         } else {
           console.log("false");
