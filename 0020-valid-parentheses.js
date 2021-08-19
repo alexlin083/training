@@ -89,7 +89,7 @@ let isValid = function (arr) {
   //   }
 };
 
-isValid("((");
+// isValid("((");
 
 /* ASCII
 ( = 40
